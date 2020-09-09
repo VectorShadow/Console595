@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * Use a hidden JLabel to generate an image for the Canvas.
+ */
 public class Renderer {
     private static JLabel renderLabel;
 
@@ -13,12 +16,18 @@ public class Renderer {
         renderLabel.setOpaque(true);
     }
 
+    /**
+     * Used by ASCIITiles to set the Renderer's label fields to match their data.
+     */
     public static void updateLabel(Color background, Color foreground, char symbol) {
         renderLabel.setBackground(background);
         renderLabel.setForeground(foreground);
         renderLabel.setText("" + symbol);
     }
 
+    /**
+     * Return a BufferedImage onto which this label's image has been painted.
+     */
     public static BufferedImage paint() {
         BufferedImage bi =
                 new BufferedImage(
