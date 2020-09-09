@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A console tile which represents a single ASCII character.
+ */
 public class ASCIITile extends ConsoleTile {
 
     private final Color BACKGROUND_COLOR;

@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * A canvas is used to draw the screen image from an array of ConsoleTiles.
+ */
 public class Canvas {
 
     private Color defaultBackgroundColor = Color.BLACK;
@@ -50,6 +53,14 @@ public class Canvas {
         return IMAGE;
     }
 
+    boolean isInBounds(int row, int col) {
+        return row >= 0 && row < HEIGHT && col >= 0 && col < WIDTH;
+    }
+
+    /**
+     * We paint the screen image by iterating through each console tile, and copying each pixel of its image
+     * onto the appropriate position in the canvas image.
+     */
     void paintCanvas() {
         final int X = TILE_DIMENSION.width;
         final int Y = TILE_DIMENSION.height;

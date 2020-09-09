@@ -4,6 +4,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
+/**
+ * The panel on which the image to be displayed on the screen is painted.
+ */
 public class DisplayPanel extends JPanel {
     
     private BufferedImage canvasImage;
@@ -24,7 +27,9 @@ public class DisplayPanel extends JPanel {
         );
     }
 
-
+    /**
+     * Determine the default size of this panel based on the user's monitor dimensions.
+     */
     private static Dimension getDefaultPanelSize() {
         return new Dimension(
                 (int)(getMonitorDimension().width / Math.sqrt(2.0)),
@@ -37,8 +42,11 @@ public class DisplayPanel extends JPanel {
         return new Dimension(dm.getWidth(), dm.getHeight());
     }
 
+    /**
+     * Override the default paintComponent method to use the panelImage.
+     */
     @Override
-    protected void paintComponent(Graphics g) {//updates the displayed image.
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (panelImage != null) {
             Graphics2D g2d = (Graphics2D) g;
@@ -47,6 +55,9 @@ public class DisplayPanel extends JPanel {
         }
     }
 
+    /**
+     * Scale the canvas image from its native size to the current size of this panel.
+     */
     private void scaleImage() {
         if (canvasImage == null)
             return;
@@ -63,7 +74,10 @@ public class DisplayPanel extends JPanel {
         canvasImage = bufferedImage;
         scaleImage();
     }
-    
+
+    /**
+     * Override the default setSize method to ensure that we re-scale the canvas image to the new size.
+     */
     @Override
     public void setSize(Dimension d) {
         super.setSize(d);

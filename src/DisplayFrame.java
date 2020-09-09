@@ -3,11 +3,18 @@ import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+/**
+ * DisplayFrame provides the window which contains the displayed image.
+ */
 public class DisplayFrame extends JFrame {
 
     private final DisplayPanel PANEL;
 
     DisplayFrame() {
+        /*
+         * This adapter ensures that the panel image is properly scaled whenever the user manually adjusts the
+         * window size.
+         */
         addComponentListener(
                 new ComponentAdapter() {
                     @Override
