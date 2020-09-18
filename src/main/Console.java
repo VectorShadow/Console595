@@ -1,9 +1,11 @@
+package main;
+
 import java.awt.*;
 
 /**
- * Console provides a GUI interface on top of swing.
- * It uses a Canvas object to render an image from selected console tiles, then paints that image
- * onto the DisplayFrame.
+ * main.Console provides a GUI interface on top of swing.
+ * It uses a main.Canvas object to render an image from selected console tiles, then paints that image
+ * onto the main.DisplayFrame.
  */
 public class Console {
 
@@ -26,7 +28,7 @@ public class Console {
 
     /**
      * Update the canvas image based on its current tile image data, then use the updated image to repaint the
-     * DisplayFrame.
+     * main.DisplayFrame.
      * Calling this method immediately updates the image visible on the screen.
      */
     public void refresh() {
@@ -41,7 +43,8 @@ public class Console {
     }
 
     /**
-     * Update the image data on the canvas. These methods do not change the image visible on the screen.
+     * Update the image data on the canvas.
+     * These methods do not change the image visible on the screen.
      */
     public void update(int row, int col, char symbol) {
         update(row, col, CANVAS.getDefaultForegroundColor(), symbol);
@@ -57,5 +60,26 @@ public class Console {
 
     public boolean validatePosition(int row, int col) {
         return CANVAS.isInBounds(row, col);
+    }
+
+    /**
+     * Write a string as image data on the canvas. Strings exceeding the available size will be cut off.
+     * These methods do not change the image visible on the screen.
+     */
+    public void writeSingleLine(int row, int originColumn, String text) {
+        writeSingleLine(row, originColumn, CANVAS.getDefaultForegroundColor(), text);
+    }
+    public void writeSingleLine(int row, int originColumn, Color foreground, String text) {
+        writeSingleLine(row, originColumn, CANVAS.getDefaultBackgroundColor(), foreground, text);
+    }
+    public void writeSingleLine(int row, int originColumn, Color background, Color foreground, String text) {
+        int currentColumn;
+        for (int i = 0; i < text.length(); ++i) {
+            currentColumn = originColumn + i;
+            if (validatePosition(row, currentColumn))
+                update(row, currentColumn, background, foreground, text.charAt(i));
+            else break;
+        }
+        refresh();
     }
 }

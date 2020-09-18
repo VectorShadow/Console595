@@ -1,10 +1,12 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 /**
- * DisplayFrame provides the window which contains the displayed image.
+ * main.DisplayFrame provides the window which contains the displayed image.
  */
 public class DisplayFrame extends JFrame {
 
