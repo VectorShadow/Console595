@@ -1,11 +1,11 @@
-package main;
+package console;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Use a hidden JLabel to generate an image for the main.Canvas.
+ * Use a hidden JLabel to generate an image for the Canvas.
  */
 public class Renderer {
     private static JLabel renderLabel;
@@ -19,7 +19,7 @@ public class Renderer {
     }
 
     /**
-     * Used by ASCIITiles to set the main.Renderer's label fields to match their data.
+     * Used by ASCIITiles to set the Renderer's label fields to match their data.
      */
     public static void updateLabel(Color background, Color foreground, char symbol) {
         renderLabel.setBackground(background);

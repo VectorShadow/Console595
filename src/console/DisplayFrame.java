@@ -1,4 +1,4 @@
-package main;
+package console;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 /**
- * main.DisplayFrame provides the window which contains the displayed image.
+ * DisplayFrame provides the window which contains the displayed image.
  */
 public class DisplayFrame extends JFrame {
 
