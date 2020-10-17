@@ -1,6 +1,7 @@
 package console;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 /**
  * internal.Console provides a GUI interface on top of swing.
@@ -16,6 +17,10 @@ public class Console {
         CANVAS = new Canvas(canvasRows, canvasColumns, tileDimension);
         DISPLAY_FRAME = new DisplayFrame();
         refresh();
+    }
+
+    public void addKeyListener(KeyListener keyListener) {
+        DISPLAY_FRAME.addKeyListener(keyListener);
     }
 
     /**
