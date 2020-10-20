@@ -13,7 +13,7 @@ public class Renderer {
     public static void initialize(Dimension tileDimension) {
         renderLabel = new JLabel();
         renderLabel.setSize(tileDimension);
-        renderLabel.setFont(new Font(Font.DIALOG, Font.PLAIN, (int)(tileDimension.getHeight() * 0.75)));
+        renderLabel.setFont(new Font(Font.DIALOG, Font.PLAIN, (int)(tileDimension.getWidth() + 1)));
         renderLabel.setHorizontalAlignment(SwingConstants.CENTER);
         renderLabel.setOpaque(true);
     }

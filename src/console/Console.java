@@ -31,6 +31,10 @@ public class Console {
         CANVAS.clearTiles();
     }
 
+    public Dimension getSize() {
+        return CANVAS.getSize();
+    }
+
     /**
      * Update the canvas image based on its current tile image data, then use the updated image to repaint the
      * DisplayFrame.
@@ -56,8 +60,8 @@ public class Console {
                 row,
                 col,
                 cg.SYM,
-                cg.FG == null ? CANVAS.getDefaultForegroundColor() : cg.FG,
-                cg.BG == null ? CANVAS.getDefaultBackgroundColor() : cg.BG);
+                cg.BG == null ? CANVAS.getDefaultBackgroundColor() : cg.BG,
+                cg.FG == null ? CANVAS.getDefaultForegroundColor() : cg.FG);
     }
     public void update(int row, int col, char symbol) {
         update(row, col, symbol, new Color[0]);
@@ -66,8 +70,8 @@ public class Console {
     public void update(int row, int col, char symbol, Color... colorOverrides) {
         if (!validatePosition(row, col))
             throw new IllegalArgumentException("Row or column out of bounds.");
-        Color fg = colorOverrides.length > 0 ? colorOverrides[0] : CANVAS.getDefaultForegroundColor();
-        Color bg = colorOverrides.length > 1 ? colorOverrides[1] : CANVAS.getDefaultBackgroundColor();
+        Color bg = colorOverrides.length > 0 && colorOverrides[0] != null ? colorOverrides[0] : CANVAS.getDefaultBackgroundColor();
+        Color fg = colorOverrides.length > 1 && colorOverrides[1] != null ? colorOverrides[1] : CANVAS.getDefaultForegroundColor();
         CANVAS.setTile(row, col, new ASCIITile(bg, fg, symbol));
     }
 

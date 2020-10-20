@@ -55,6 +55,10 @@ public class Canvas {
         return IMAGE;
     }
 
+    Dimension getSize() {
+        return new Dimension(WIDTH, HEIGHT);
+    }
+
     boolean isInBounds(int row, int col) {
         return row >= 0 && row < HEIGHT && col >= 0 && col < WIDTH;
     }
